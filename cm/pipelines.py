@@ -13,7 +13,6 @@ class CmFulltextPipeline(FilesPipeline):
 
     # For Content Mine Items, attempt to download the PDF:
     def get_media_requests(self, item, info):
-        print("GAAAAAAAA %s" % item)
         # Pass the ID to use as the folder name:
         yield scrapy.Request(item['fulltext_url'], meta = {'id': item['id']})
 

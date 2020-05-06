@@ -94,5 +94,5 @@ ITEM_PIPELINES = {
 FILES_STORE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../cproject')
 
 # Where to log the items we find:
-FEED_URI=os.path.join(FILES_STORE, 'items.csv')
-FEED_FORMAT='csv'
+FEED_URI=os.path.join(FILES_STORE, 'cm_results.jsonl')
+FEED_FORMAT='jsonlines'
