@@ -9,6 +9,9 @@ import scrapy
 
 
 class CmItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    # An identifier for each item, used to make a folder to contain the results
+    id = scrapy.Field()
+    # The 'homepage' for the item:
+    homepage_url = scrapy.Field()
+    # The URL of the full-text, to download:
+    fulltext_url = scrapy.Field()

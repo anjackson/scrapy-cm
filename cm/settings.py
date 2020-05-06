@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 
 # Scrapy settings for cm project
 #
@@ -16,7 +17,7 @@ NEWSPIDER_MODULE = 'cm.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'cm (+http://www.yourdomain.com)'
+USER_AGENT = 'Prototype ContentMine Crawler (+http://anjackson.net)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -64,9 +65,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'cm.pipelines.CmPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'cm.pipelines.CmFulltextPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -88,3 +89,10 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# Where to store the downloaded files:
+FILES_STORE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../cproject')
+
+# Where to log the items we find:
+FEED_URI=os.path.join(FILES_STORE, 'items.csv')
+FEED_FORMAT='csv'
