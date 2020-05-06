@@ -17,7 +17,7 @@ NEWSPIDER_MODULE = 'cm.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = 'Prototype ContentMine Crawler (+http://anjackson.net)'
+USER_AGENT = 'ContentMineOpenVirusCrawler (+https://github.com/petermr/openVirus#openvirus)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
