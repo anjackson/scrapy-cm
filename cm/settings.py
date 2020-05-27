@@ -20,7 +20,8 @@ NEWSPIDER_MODULE = 'cm.spiders'
 USER_AGENT = 'ContentMineOpenVirusCrawler (+https://github.com/petermr/openVirus#openvirus)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+# ANJ would prefer not to do this, but Medrxiv is oddly restrictive.
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32

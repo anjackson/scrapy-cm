@@ -19,3 +19,18 @@ Once you're sure it's working, you can attempt to download all the hits:
     scrapy crawl ethosapi -a "query=coronavirus OR coronaviruses"
 
 By default, the results will be output to a folder called `cproject`, using the [CProject](https://github.com/ContentMine/workshop-resources/blob/master/software-tutorials/cproject/README.md#what-is-a-cproject) layout. Some more details about the downloads will be placed in a `cm_results.jsonl` file (in [JSON Lines format](http://jsonlines.org/)) in the output directory.
+
+
+### Medrxiv Example
+
+Work-in-progress...
+
+    scrapy crawl medrxiv -a "query=(virus* OR viral) AND epidemic*"
+
+
+## Ideas
+
+- Dockerized version.
+- Extend pipeline to generate `scholarly.html` from the `fulltext.pdf` using e.g. Apache Tika if it's available (via [the `item_completed` hook](https://docs.scrapy.org/en/latest/topics/media-pipeline.html#scrapy.pipelines.files.FilesPipeline.item_completed)).
+- Also support DOAJ API search and download.
+- Make it possible to configure the CProject output folder location?
