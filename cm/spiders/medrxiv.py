@@ -3,9 +3,14 @@ import scrapy
 import json
 from cm.items import CmItem
 
-class EthosapiSpider(scrapy.Spider):
+class MedrxivSpider(scrapy.Spider):
     name = 'medrxiv'
     allowed_domains = ['www.medrxiv.org']
+
+    custom_settings = {
+        # Medrxiv's robots.txt blocks search (but not downloads):
+        "ROBOTSTXT_OBEY": False
+    }
 
     # EThOS API specific parameters:
     query_url = "https://www.medrxiv.org/search/"

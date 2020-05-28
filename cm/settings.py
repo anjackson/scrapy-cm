@@ -20,16 +20,15 @@ NEWSPIDER_MODULE = 'cm.spiders'
 USER_AGENT = 'ContentMineOpenVirusCrawler (+https://github.com/petermr/openVirus#openvirus)'
 
 # Obey robots.txt rules
-# ANJ would prefer not to do this, but Medrxiv is oddly restrictive.
-ROBOTSTXT_OBEY = False
+ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
-# Configure a delay for requests for the same website (default: 0)
+# Configure a delay for requests for the same website in seconds (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 1
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -67,6 +66,7 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
+    # Add our custom logic for downloading full-text to CProject layout
     'cm.pipelines.CmFulltextPipeline': 300,
 }
 
@@ -91,9 +91,11 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-# Where to store the downloaded files:
-FILES_STORE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../cproject')
+# Where to store the downloaded files (CProject folder):
+DEFAULT_FILES_STORE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../cproject')
+# Can set the CPROJECT_FOLDER environment variable to override the default:
+FILES_STORE = os.environ.get('CPROJECT_FOLDER', DEFAULT_FILES_STORE)
 
-# Where to log the items we find:
+# Where to log the items we find (inside the CProject folder):
 FEED_URI=os.path.join(FILES_STORE, 'cm_results.jsonl')
 FEED_FORMAT='jsonlines'
