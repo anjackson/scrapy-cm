@@ -33,7 +33,7 @@ There is also an experimental crawler for the Medrxiv preprint server. It can be
 
     scrapy crawl medrxiv -a "query=(virus* OR viral) AND epidemic*"
 
-The <./run-medrxiv-test.sh> file shows an example of how to run a crawl and download to a particular folder.
+The [run-medrxiv-test.sh](./run-medrxiv-test.sh) file shows an example of how to run a crawl and download to a particular folder.
 
 Note that at present:
 
